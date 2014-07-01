@@ -1,0 +1,36 @@
+<h1> All Posts </h1>
+
+<ul id="post">
+  <% @posts.each do |post| %>
+
+     <li>User: <%= link_to(post.user.name, post_path(post)) if post.user %> </li>
+     <li>Title: <%= link_to(post.title, post_path(post)) %></li>
+
+
+
+   
+
+   <% end %>
+
+<h1>Tumblr Post</h1>
+   
+
+<% @tumblr_post['posts'].each do |post|  %>
+	<p> Tumblr Name: <%= link_to post["blog_name"], post['post_url'] %> </p>
+	<p> Tumblr Tilte: <%=  link_to post["slug"], post['post_url'] %> </p>
+	
+		
+
+
+    <p> link to Tumblr Blog <%= link_to post["blog_name"], post['post_url'] %>
+	<%#= link_to post["http://davidmes.tumblr.com/post/89516564159/week-3-we-posted-our-first-app-online-through"]%>
+	 
+	<%= truncate(raw(post['caption']), escape: false) %>
+  
+	<% end %>
+<!-- @tumblr_post == {blog=>{},posts=>{},total_posts=>'8'} -->
+
+  
+
+</ul>
+

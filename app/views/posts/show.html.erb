@@ -1,0 +1,21 @@
+
+<h1>Title: <%= @post.title %></h1>
+<li><%= link_to(@post.user.name, @post.user) if @post.user %></li>
+<%= image_tag(@post.image) %>
+<p> Post: <%=@post.body %></p>
+
+<%= link_to'Edit', edit_post_path %>
+<%= link_to'Delete', @post, :method => :delete, :confirm => "Are you sure you want to delete this Post?" %></p>
+
+<p><%= link_to " Back to post list", posts_path %> 
+
+
+	
+
+
+
+
+
+
+
+	
