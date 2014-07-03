@@ -1,5 +1,6 @@
 <div class="background">
-  
+
+
 <%= form_for @user do |f| %>
   <p>
     <%= f.label :name %>
@@ -11,11 +12,12 @@
     <%= f.text_field :email %>
   </p>
 
-  <p>
+ <p class="avatar">
     <%= f.label :avatar %>
     <%= f.file_field :avatar %>
     <%= f.hidden_field :avatar_cache %>
   </p>
+ 
 
   <p><%= f.button 'Create User' %></p>
 <% end %>
