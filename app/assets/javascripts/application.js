@@ -14,3 +14,20 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+
+$(document).ready(function(){ 
+       
+       
+        // $('.closemenu').click(function(){ 
+        //     $('.tumblr').fadeOut("slow"); 
+        // });
+
+        
+  $("button").click(function(){
+    $(".tumblr").toggle();
+  });
+
+
+});
+

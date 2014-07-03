@@ -1,7 +1,9 @@
 
 <h1>Title: <%= @post.title %></h1>
 <li><%= link_to(@post.user.name, @post.user) if @post.user %></li>
+<%= image_tag(@post.user.avatar_url, :class => 'thumb') %>
 <%= image_tag(@post.image) %>
+
 <p> Post: <%=@post.body %></p>
 
 <%= link_to'Edit', edit_post_path %>

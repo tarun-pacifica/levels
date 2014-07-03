@@ -5,21 +5,39 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  
 </head>
+
+
 <body>
+<header>
+  <div class="row">
+    <div class="large12">
+      
+   <!--  <img src="assets/treetants2.jpg"> -->
+     </div>
+  </div>
+<header>
 
 <div id="container">
+
+
+
+  
+<div class="menu">
     <nav>
-      <ul>
+      
         <li><%= link_to('Home', '/') %></li>
         <li><%= link_to('Users', users_path) %></li>
         <li><%= link_to('Create a new User', new_user_path) %></li>
         <li><%= link_to('All Posts', posts_path) %></li>
         <li><%= link_to('Add New Post', new_post_path) %></li>
-      </ul>
+      
     </nav>
-
+</div>
+   <div class="background">
     <%= yield %>
+  </div>
   </div>
 
 </body>

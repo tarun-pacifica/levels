@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
    def index
- 
+    
     @key = 'Do1mHRSlF1wBiwFq7WuxApvRIRQJFfN5ywZxgm1LqitSHQPyRs'
      @secret = 'Do1mHRSlF1wBiwFq7WuxApvRIRQJFfN5ywZxgm1LqitSHQPyRs'
      @oauth_token = 'Do1mHRSlF1wBiwFq7WuxApvRIRQJFfN5ywZxgm1LqitSHQPyRs'
@@ -14,14 +14,14 @@ class PostsController < ApplicationController
      :oauth_token_secret => @oauth_token_secret
      })
 
-      @tumblr_post = @myClient.posts('davidmes.tumblr.com', :limit => 3)
-      # @tumblr_post['posts'].each do |post|
-      #   existing_post = Post.find_by(:tumblr_id => post['id'].to_s)
-      #   if existing_post.nil?
-      #     local_post = Post.create(:name => post['blog_name'], :title => post['slug'], :tumblr_id => post['id'])
-      #     User.first.posts << local_post # Fix this.
-      #   end
-      # end
+      @tumblr_post = @myClient.posts('davidmes.tumblr.com', :limit => 6)
+      @tumblr_post['posts'].each do |post|
+        existing_post = Post.find_by(:tumblr_id => post['id'].to_s)
+        if existing_post.nil?
+          local_post = Post.create(:name => post['blog_name'], :title => post['slug'], :tumblr_id => post['id'])
+          User.first.posts << local_post # Fix this.
+        end
+      end
       @posts = Post.all
    end 
 
@@ -31,7 +31,7 @@ class PostsController < ApplicationController
    end
 
   def new
-   # @user = @current_user
+    @user = @current_user
     @post = Post.new
   end
 
@@ -55,10 +55,10 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
-  # def author
-  #   @posts = Post.where(:user_id => params[:id])
-  #   render :index
-  # end
+  def author
+    @posts = Post.where(:user_id => params[:id])
+    render :index
+  end
 
   private
   def post_params

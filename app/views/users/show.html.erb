@@ -1,6 +1,8 @@
+
+
 <h2><%= @user.name %></h2>
 <ul>
-  <li><%= image_tag(@user.avatar, :class => 'medium') %></li>
+  <li><%= image_tag(@user.avatar, :class => 'thumb') %></li>
   <li><%= @user.email %></li>
 
   <% @user.posts.each do |post| %>
@@ -17,3 +19,4 @@
 
   
 </ul>
+

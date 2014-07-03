@@ -1,36 +1,69 @@
-<h1> All Posts </h1>
+<div class="user">
 
-<ul id="post">
+<h1> Post Feed </h1>
+
+<ul>
+
+
   <% @posts.each do |post| %>
 
+
+  <div class="userfont">
+
      <li>User: <%= link_to(post.user.name, post_path(post)) if post.user %> </li>
+     <li><%= image_tag(post.user.avatar_url, :class => 'thumb') if post.user   %></li>
      <li>Title: <%= link_to(post.title, post_path(post)) %></li>
 
+     <% unless post.nil? %>
+    <li> Post: <%= truncate(post.body)  %> </li>
+    <% else %>
+    <% @tumblr_post['posts'].each do |post|  %>
 
+   </li> <% truncate(raw(post['caption']), escape: false) %>  </li>
+    <% end %>
+    <% end %>
+     
+     <%= link_to'Delete', post, :class => 'delete',:method => :delete, :confirm => "Are you sure you want to delete this Post?" %></p>
 
-   
+<hr>
+   	
 
    <% end %>
 
-<h1>Tumblr Post</h1>
    
 
-<% @tumblr_post['posts'].each do |post|  %>
-	<p> Tumblr Name: <%= link_to post["blog_name"], post['post_url'] %> </p>
-	<p> Tumblr Tilte: <%=  link_to post["slug"], post['post_url'] %> </p>
-	
+ <!-- <div id="stay"> -->
+ <button class="closemenu">Show Tumblr</button>
+<br>
+<br>
+ <hr>
+      <div class="tumblr">
+		<h1>Tumblr Post</h1>
+		   
+
+		   <% @tumblr_post['posts'].each do |post|  %>
+			<li> Tumblr Name: <%= link_to post["blog_name"], post['post_url'] %> </li>
+			<li> Tumblr Tilte: <%=  link_to truncate(raw(post["slug"])), post['post_url'] %> </li>
+			
 		
+			 
+			<li> Blog:<%= truncate(raw(post['caption']), escape: false) %></li>
+			<hr>
+       
+        
 
+		 
+		  
+		<% end %>
 
-    <p> link to Tumblr Blog <%= link_to post["blog_name"], post['post_url'] %>
-	<%#= link_to post["http://davidmes.tumblr.com/post/89516564159/week-3-we-posted-our-first-app-online-through"]%>
-	 
-	<%= truncate(raw(post['caption']), escape: false) %>
-  
-	<% end %>
+     </div>
+
+    </div>
+
 <!-- @tumblr_post == {blog=>{},posts=>{},total_posts=>'8'} -->
 
-  
+  </ul>
 
-</ul>
+</div>
 
+   <!--  <%= @tumblr_post %> -->
