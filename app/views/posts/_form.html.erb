@@ -1,7 +1,7 @@
 
+<div class="background">
 
-
-<ul>
+   <div class="show">
     <%= form_for @post do |f| %>
     <% @post.errors.full_messages.each do |error| %>
       <li><%= error %></li>
@@ -26,12 +26,10 @@
    </p>
 
    
-     <%= f.submit %>
-
-    </p>
+    <p> <%= f.submit %> </p>
 
     <% end %>
 
+</div>
 
-
-</ul>
+</div>

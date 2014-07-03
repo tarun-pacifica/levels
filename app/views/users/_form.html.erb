@@ -1,24 +1,24 @@
 <div class="background">
 
-
+<div class="show">
 <%= form_for @user do |f| %>
-  <p>
-    <%= f.label :name %>
-    <%= f.text_field :name, :autofocus => true %>
+
+    <%= f.text_field :name,  :placeholder => "Full Name", :autofocus => true, :class => "css_class" %>
   </p>
 
   <p>
-    <%= f.label :email %>
-    <%= f.text_field :email %>
+    
+    <%= f.text_field :email, :placeholder => "Email", :class => "css_class" %>
   </p>
 
- <p class="avatar">
-    <%= f.label :avatar %>
-    <%= f.file_field :avatar %>
-    <%= f.hidden_field :avatar_cache %>
+     
+    <%= f.file_field :avatar, :class => "css_avatar"  %>
+    <%= f.hidden_field :avatar_cache, :class => "css_avatar" %>
   </p>
+  
  
 
   <p><%= f.button 'Create User' %></p>
 <% end %>
+  </div>
 </div>
