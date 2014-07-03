@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
 
+  before_action :check_if_logged_in
+
+
    def index
     
     @key = 'Do1mHRSlF1wBiwFq7WuxApvRIRQJFfN5ywZxgm1LqitSHQPyRs'
@@ -64,4 +67,15 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:name, :title, :body, :image, :user_id)
   end
+
+    def check_if_logged_in
+    redirect_to(new_user_path) if @current_user.nil?
+  end
+
+  def check_if_admin
+    redirect_to(root_path) unless @current_user.is_admin?
+  end
+
+
+
 end

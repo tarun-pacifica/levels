@@ -28,10 +28,18 @@
     <nav>
       
         <li><%= link_to('Home', '/') %></li>
-        <li><%= link_to('Users', users_path) %></li>
-        <li><%= link_to('Create a new User', new_user_path) %></li>
-        <li><%= link_to('Post Feed', posts_path) %></li>
-        <li><%= link_to('Add a New Post', new_post_path) %></li>
+        <% if @current_user.nil? %>      
+          <li><%= link_to('Create a new User', new_user_path) %></li>
+          <li><%= link_to('Login as an existing User', login_path) %></li>
+        <% end %>
+        <% if @current_user.present? %>
+          <li><%= link_to('Post Feed', posts_path) %></li>
+          <li><%= link_to('Add a New Post', new_post_path) %></li>
+          <li><%= link_to('Sign Out', login_path, :method => :delete) %></li>
+          <% if @current_user.is_admin? %>
+            <li><%= link_to('Users', users_path) %></li>
+          <% end %>
+        <% end %>
       
     </nav>
 </div>
@@ -39,6 +47,12 @@
     <%= yield %>
   
   </div>
+
+    <% if flash[:notice].present? %>
+    <div class="notice">
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
 
 </body>
 </html>

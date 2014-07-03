@@ -10,7 +10,7 @@
 
   <div class="userfont">
 
-     <li>User: <%= link_to(post.user.name, post_path(post)) if post.user %> </li>
+     <li>User: <%= link_to(post.user.username, post_path(post)) if post.user %> </li>
      
      <div class="truncate">
      <li><%= image_tag(post.user.avatar_url, :class => 'thumb') if post.user   %></li>

@@ -8,7 +8,7 @@
       <% end %>
 
       <p><%= f.label :user_id %>
-      <%= f.select :user_id, User.all.map{|user|[user.name, user.id]}, :include_blank => true %>
+      <%= f.select :user_id, User.all.map{|user|[user.username, user.id]}, :include_blank => true %>
 
      </p>
      <p>
