@@ -18,7 +18,7 @@ class PostsController < ApplicationController
       @tumblr_post['posts'].each do |post|
         existing_post = Post.find_by(:tumblr_id => post['id'].to_s)
         if existing_post.nil?
-          local_post = Post.create(:name => post['blog_name'], :title => post['slug'], :tumblr_id => post['id'])
+          local_post = Post.create(:name => post['blog_name'], :title => post['slug'], :tumblr_id => post['id'], :body => post['caption'])
           User.first.posts << local_post # Fix this.
         end
       end
