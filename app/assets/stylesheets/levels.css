@@ -15,7 +15,7 @@
 }
 
 .large12{
-background-image: url(/assets/treetants2.jpg);
+background-image: url('treetants2.jpg');
 background-position: middle;
 -webkit-background-size: contain;
 -moz-background-size: cover;
